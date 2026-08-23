@@ -1,4 +1,4 @@
-# PlantAI
+# PlantWise AI App
 
 A mobile-first Next.js MVP for camera-based plant identification, visible-health guidance, and contextual care chat.
 
