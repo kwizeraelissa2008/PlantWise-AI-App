@@ -8,4 +8,4 @@ A mobile-first Next.js MVP for camera-based plant identification, visible-health
 2. Run `npm install`.
 3. Run `npm run dev`.
 
-Without `GROQ_API_KEY`, every scan returns structured demo data and visibly identifies itself as Demo Mode.
+Without `API_KEY`, every scan returns structured demo data and visibly identifies itself as Demo Mode.
