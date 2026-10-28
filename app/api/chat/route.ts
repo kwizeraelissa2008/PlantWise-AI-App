@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   if (!apiKey) return NextResponse.json({ answer: demoAnswer(question, context), demo: true });
   try {
     const prompt = `You are PlantAI, a practical agricultural guide. Scan context: plant=${context.plantName}; health=${context.healthStatus}; visible concern=${context.problem || "none"}; care=${JSON.stringify(context.careGuide)}. Answer this question in 1–3 short sentences and under 60 words: ${question}. Return only valid JSON in this format: {"answer":"your concise answer"}. Do not expose reasoning or use markdown.`;
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", { method: "POST", headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: "qwen/qwen3.6-27b", temperature: 0.3, max_completion_tokens: 120, reasoning_effort: "none", reasoning_format: "hidden", response_format: { type: "json_object" }, messages: [{ role: "user", content: prompt }] }) });
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", { method: "POST", headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: "qwen/qwen3.8-27b", temperature: 0.3, max_completion_tokens: 120, reasoning_effort: "none", reasoning_format: "hidden", response_format: { type: "json_object" }, messages: [{ role: "user", content: prompt }] }) });
     if (!response.ok) throw new Error("Groq request failed");
     const data = await response.json() as { choices?: { message?: { content?: string } }[] };
     const content = data.choices?.[0]?.message?.content;
